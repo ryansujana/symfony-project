@@ -26,9 +26,21 @@ use Symfony\Component\HttpFoundation\Request;
 		{
 		// request
 		// $name =  $request->get('name');
-		//
+
+		// Perbedaan antara createForm & createFormBuilder
+			$form = $this->createFormBuilder()
+			->add('fullname')
+			->getForm()
+			;
+
+			$person = [
+				'name' => 'Media',
+				'lastname' => 'Jabar',
+				'age' => '20'
+			];
 			return $this->render('home/great.html.twig',[
-				'name' => $name,
+				'person' => $person,
+				'user_form' => $form->createView()
 
 			]);
 		}
